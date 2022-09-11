@@ -1,0 +1,55 @@
+{% extends "base_generic.html" %}
+
+
+
+{% block content %}
+<section class="contain-detail">
+{% if tableau.affichage == False %}
+    <p class="center"> Ce lien ne renvoie sur aucun tableau</p>
+    <a href="{% url 'tableau' %}">Retour aux Tableaux</a>
+{% else %}
+  <a class="retour barre-a" href="{% url 'tableau' %}">Retour à la liste</a>
+  <div class="corps-detail">
+    
+    <div class="detail-image">
+      <img src="{{ tableau.photo.url }}" alt="">
+    </div>
+    <div class="detail-texte">
+      <h1>{{ tableau.nom_tableau }}</h1>
+      <p>{{ tableau.description}}</p>
+      <p>by <a href="{% url 'peintre' %}">{{ tableau.peintre }}</a></p>
+      <p>Dimension : {{ tableau.longueur }} x {{ tableau.largeur }} cm</p>
+      <p>Date : {{ tableau.date_debut }} - {{ tableau.date_fin }}</p>
+      <p>Type : {{ tableau.type }}</p>
+    </div>
+   
+  </div>
+ 
+<div id="comments" class="contain-commentaire">
+  <h3>Vos commentaires</h3>
+  {% if tableau.commentaire_set.all %}
+    {% for commentaire in tableau.commentaire_set.all %}
+      <div class="commentaire">
+        <h5><div class="commentaire-rond"><i class="fa-solid fa-user"></i></div>{{ commentaire.personne }}</h5>
+        <p class="date">Commenté le {{ commentaire.date_publication }}</p>
+        <p>{{ commentaire.texte }}</p>
+      </div>
+    {% endfor %}
+  {% else %}
+    <p class="center">Aucun commentaire</p>
+  {% endif %}
+</div>
+{% block formulaire %}
+  <form>
+    <h3>Ajouter votre commentaire</h3>
+    {% csrf_token %}
+    {{ form }}
+    <button hx-post="{% url 'add-comments' tableau.id %}"
+            hx-target="#comments"
+            hx-swap="beforeend"
+    type="submit">Publier</button>
+  </form>
+{% endblock %}
+{% endif %}
+</section>
+{% endblock %}

@@ -1,0 +1,24 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<section class="contain-update">
+  <a href="{% url 'administration' %}">Retour liste tableaux</a>
+  <h1>Ajouter un Tableau <button onclick="AddType()">Ajouter un type</button></h1>
+  <form method="POST" action="#" enctype="multipart/form-data">
+    {% csrf_token %}
+      {{ form.as_p }}
+      <button type="submit">Ajouter tableau</button>
+  </form>
+
+  <div id="form-type" class="form-absolute">
+    <div class="overlay"></div>
+    <form method="POST" action=" {% url 'addtype' %} ">
+      <h3>Ajouter un type de tableau</h3>
+      <div class="close" onclick="AddType()"></div>
+      {% csrf_token %}
+      {{ form_type.as_p }}
+      <button type="submit">Ajouter type</button>
+    </form>
+  </div>
+</section>
+{% endblock %}

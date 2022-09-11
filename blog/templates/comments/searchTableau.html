@@ -1,0 +1,23 @@
+{% if tableau %}
+        {% for tableau in tableau %}
+          {% if tableau.affichage != False %}
+          <a href="{% url 'tableau-detail' tableau.id %}">
+            <div class="tableau">
+              <div class="image-tableau">
+                <img src="{{ tableau.photo.url }}" alt="">
+              </div>
+              <div class="text-tableau">
+                <h3>
+                  {{ tableau.nom_tableau }}
+                </h3>
+                <p>
+                  {{ tableau.date_debut }} - {{ tableau.date_fin }}
+                </p>
+              </div>
+            </div>
+          </a>
+          {% endif %}
+        {% endfor %}
+    {% else %}
+      <p>Il n'y a aucun tableau</p>
+    {% endif %}

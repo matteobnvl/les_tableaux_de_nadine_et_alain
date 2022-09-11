@@ -1,0 +1,34 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <section class="contain-home">
+    <div class="before-bienvenue"></div>
+    <div class="title-bienvenue">
+      <h1>bienvenue</h1>
+    </div>
+    <div class="after-bienvenue"></div>
+    <div class="next-box">
+      <p>
+        Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi quibusdam aspernatur mollitia, perferendis suscipit magnam accusamus nihil, molestiae, itaque sit ipsam voluptatibus quam adipisci qui obcaecati molestias ullam corporis iure!
+      </p>
+    </div>
+    <div class="decouvrir-tableau">
+      <div class="box-decouvrir">
+        <h4 class="title-transparent">Découvrer nos {{ num_tableau }} tableaux</h4>
+        <div class="box-tabl">
+          {% for tableau in tableau %}
+            <div>
+              <img src="{{ tableau.photo.url }}" alt="">
+              <h4>{{ tableau.nom_tableau }}</h4>
+            </div>
+          {% endfor %}
+        </div>
+        <div class="box-button">
+          <a href="{% url 'tableau' %}">
+            <button>Découvrir plus</button>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+{% endblock %}

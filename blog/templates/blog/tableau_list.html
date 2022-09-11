@@ -1,0 +1,84 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+<section class="contain-tableau">
+  <div class="headen">
+    <h1>Liste des tableaux</h1>
+    <div class="filtre">
+      <div>
+        <form>
+          {% csrf_token %}
+          <input type="text" name="recherche" placeholder="Recherche">
+          <button hx-post="{% url 'search' %}"
+                  hx-target="#search"
+              type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button>
+        </form>
+      </div>
+      <button onclick="filter()" >filtre</button>
+    </div>
+  </div>
+  <div id="filter" class="contain-filtre">
+    <h4>Filtre</h4>
+    <div class="contain-box-filtre">
+      <form>
+        {% csrf_token %}
+        <div class="box-filtre behind">
+          <h5>Peintre</h5>
+          <select name="peintre" id="peintre">
+            <option value="">Tous</option>
+            {% for peintre in peintre %}
+                <option value="{{ peintre.id }}">{{ peintre }}</option>
+            {% endfor %}
+          </select>
+        </div>
+        <div class="box-filtre behind">
+          <h5>Type peinture</h5>
+            <select name="type" id="">
+              <option value="">Tous</option>
+              {% for type in type %}
+                  <option value="{{ type.id }}">{{ type.type_nom }}</option>
+              {% endfor %}
+            </select>
+        </div>
+        <div class="box-filtre">
+          <h5>Date ajout</h5>
+            <select name="date">
+              <option value="date-r">Plus récente</option>
+              <option value="date-a">Plus ancienne</option>
+            </select>
+        </div>
+        <button hx-post="{% url 'filtre' %}"
+                hx-target="#search"
+                type="submit">Afficher résultat</button>
+      </form>
+    </div>
+  </div>
+  <div class="corps" id="search">
+    {% if tableau %}
+        {% for tableau in tableau %}
+          {% if tableau.affichage != False %}
+          <a href="{% url 'tableau-detail' tableau.id %}">
+            <div class="tableau">
+              <div class="image-tableau">
+                <img src="{{ tableau.photo.url }}" alt="">
+              </div>
+              <div class="text-tableau">
+                <h3>
+                  {{ tableau.nom_tableau }}
+                </h3>
+                <p>
+                  {{ tableau.peintre }}
+                </p>
+              </div>
+            </div>
+          </a>
+          {% endif %}
+        {% endfor %}
+    {% else %}
+      <p>Il n'y a aucun tableau</p>
+    {% endif %}
+  </div>
+</section>
+{% endblock %}
+
+

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  {% block title %}<title>Blog</title>{% endblock %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Add additional CSS in static file -->
+  {% load static %}
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <script src="{% static 'js/app.js' %}"></script>
+  <script src="https://unpkg.com/htmx.org@1.8.0"></script>  
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+</head>
+<body>
+    <header>
+      <div class="title-site">
+        <h1>Blog peinture</h1>
+      </div>
+      <div id="burger" onclick="ClickBurger()" class="burger" class="burger">
+        <span></span>
+      </div>
+      <nav id="nav" class="navig">
+        <span></span>
+      {% block menu %}
+        <ul>
+          <li class="barre-a"><a href="{% url 'index' %}">Accueil</a></li>
+          <li class="barre-a"><a href="{% url 'tableau' %}">Nos tableaux</a></li>
+        </ul>
+     {% endblock %}
+      </nav>
+      {% if user.is_authenticated %}
+      <div id="admin" class="box-admin">
+        <div class="username">
+            <p>admin - {{ user.get_username }}</p>
+        </div>
+        <div class="lien-gestion">
+            <li><a href="{% url 'administration' %}">Administration</a></li>
+            <li><a href="{% url 'logout'%}?next={% url 'index' %}">Déconnexion</a></li>
+        </div>
+      </div>
+      {% endif %}
+    </header>
+  <main>
+    {% block content %}
+    {% endblock %}
+  </main>
+
+</body>
+</html>

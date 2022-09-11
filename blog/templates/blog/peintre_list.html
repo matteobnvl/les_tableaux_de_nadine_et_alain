@@ -1,0 +1,18 @@
+{% extends "base_generic.html" %}
+
+{% block content %}
+  <h1>Liste des peintres</h1>
+  {% if peintre_list %}
+  <ul>
+    {% for peintre in peintre_list %}
+      <li>
+        <p>
+          {{ peintre.nom }} {{ peintre.prenom }}
+        </p>
+      </li>
+    {% endfor %}
+  </ul>
+  {% else %}
+    <p>Il n'y a aucun peintre</p>
+  {% endif %}
+{% endblock %}

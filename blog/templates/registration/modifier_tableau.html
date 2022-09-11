@@ -1,0 +1,14 @@
+ {% extends "base_generic.html" %}
+ {% block content %}
+ <section class="contain-update" >
+    <a href="{% url 'administration' %}">Retour liste tableaux</a>
+    <h1>Modifier Tableau</h1>
+    <form method="POST" action="#" enctype="multipart/form-data">
+        {% crsf_token %}
+        {{ form.as_p }}
+        <button>Sauvegarder modification</button>
+    
+    </form>
+
+</section>
+ {% endblock %}

@@ -1,0 +1,28 @@
+ {% extends "base_generic.html" %}
+ {% block content %}
+ <section class="admin-liste">
+    <div  class="ajouter">
+        <a href="{% url 'ajouter-tableau' %}"> Ajouter un tableau</a>
+    </div>
+    <div class="liste-tableaux">
+        <div class="tableau-admin sans">
+            <h4>Mes tableaux</h4>
+            <div class="form-affich">
+                <p>Modifier</p>
+                <p>
+                    affichage
+                </p>
+            </div>
+        </div>
+        {% for tableau in tableau %}
+            <div class="tableau-admin">
+                <p>{{ tableau.nom_tableau }}</p>
+                <div class="form-affich">
+                    <a href=" {% url 'modifier-tableau' tableau.id %} "><i class="fa-solid fa-pen"></i></a>
+                    <input type="checkbox" name="affichage" {% if tableau.affichage == True %} checked {% endif %} disabled>
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+</section>
+ {% endblock %}
