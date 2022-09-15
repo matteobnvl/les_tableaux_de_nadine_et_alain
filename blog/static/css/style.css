@@ -605,7 +605,7 @@ button:hover
 }
 
 .detail-image{
-    width: 50%;
+    width: 45%;
     height: 500px;
     display: flex;
     justify-content: center;
@@ -617,7 +617,7 @@ button:hover
 }
 
 .detail-texte{
-    width: 60%;
+    width: 50%;
     height: 100%;
     padding-right:20px ;
 }
@@ -1245,9 +1245,6 @@ button:hover
         margin-right: auto;
     }
 
-    .tableau{
-        margin-left: 0px;
-    }
 
     .behind:after{
         content: none;
