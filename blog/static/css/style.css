@@ -601,6 +601,7 @@ button:hover
     display: flex;
     justify-content: space-between;
     position: relative;
+    flex-wrap: wrap;
 }
 
 .detail-image{
@@ -1306,4 +1307,28 @@ button:hover
     .admin-liste{
         padding-top: 10vh;
     }
+
+    .commentaire{
+        width: 80%;
+    }
+
+    .contain-commentaire {
+        width: 100%;
+    }
+
+    .contain-detail form {
+        width: 80%;
+    }
+
+    .detail-texte{
+        width: 80%;
+        margin: auto;
+    }
+
+    .detail-image{
+        width: 100%;
+    }
+
+
+
 }
