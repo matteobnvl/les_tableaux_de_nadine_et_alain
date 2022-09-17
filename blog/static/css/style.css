@@ -1327,5 +1327,22 @@ button:hover
     }
 
 
+    .barre-a:after{
+        content: none;
+    }
+
+    .barre-a:before{
+        content: none;
+    }
+
+    .tableau{
+        margin: auto;
+    }
+
+    .corps{
+        width: auto;
+    }
+
+
 
 }
