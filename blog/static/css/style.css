@@ -1030,7 +1030,7 @@ nav ul{
         position: absolute;
         left: 50%;
         top: 50%;
-        background: #C583C8;
+        background: #003273;
         transform: translate(-50%,-50%);
         border-radius: 5px;
     }
@@ -1086,7 +1086,7 @@ nav ul{
         display: block;
         height: 100%;
         width: 100%;
-        background: #C583C8;
+        background: #003273;
         border-radius: 5px;
         position: absolute;
         top: 0;
@@ -1100,7 +1100,7 @@ nav ul{
         display: block;
         height: 100%;
         width: 100%;
-        background: #C583C8;
+        background: #003273;
         position: absolute;
         top: 0;
         left: 0;
@@ -1139,10 +1139,10 @@ nav ul{
     }
 
     nav ul{
-        display: block;
-        width: 70%;
-        height: 80%;
+        height: 30%;
         margin: auto;
+        flex-wrap: wrap;
+        transform: translateY(-100%);
     }
 
     nav li{
