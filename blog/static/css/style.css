@@ -140,6 +140,10 @@ nav ul{
 
 }
 
+.title-site a{
+    text-decoration: none;
+}
+
 .title-site:after{
     content: "";
     display: block;
@@ -998,10 +1002,10 @@ nav ul{
    }
    .burger{
         position: absolute;
-        left: -40%;
+        left: 0;
         top: 0;
 	    display: block;
-	    width: 100%;
+	    width: 50px;
 	    height: 100%;
 	    border: none;
         transition: all 1s;
