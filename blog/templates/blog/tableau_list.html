@@ -3,55 +3,14 @@
 {% block content %}
 <section class="contain-tableau">
   <div class="headen">
-    <h1>Liste des tableaux</h1>
-    <div class="filtre">
-      <div>
-        <form>
-          {% csrf_token %}
-          <input type="text" name="recherche" placeholder="Recherche">
-          <button hx-post="{% url 'search' %}"
-                  hx-target="#search"
-              type="submit" ><i class="fa-solid fa-magnifying-glass"></i></button>
-        </form>
-      </div>
-      <button onclick="filter()" >filtre</button>
-    </div>
-  </div>
-  <div id="filter" class="contain-filtre">
-    <h4>Filtre</h4>
-    <div class="contain-box-filtre">
-      <form>
-        {% csrf_token %}
-        <div class="box-filtre behind">
-          <h5>Peintre</h5>
-          <select name="peintre" id="peintre">
-            <option value="">Tous</option>
-            {% for peintre in peintre %}
-                <option value="{{ peintre.id }}">{{ peintre }}</option>
-            {% endfor %}
-          </select>
-        </div>
-        <div class="box-filtre behind">
-          <h5>Type peinture</h5>
-            <select name="type" id="">
-              <option value="">Tous</option>
-              {% for type in type %}
-                  <option value="{{ type.id }}">{{ type.type_nom }}</option>
-              {% endfor %}
-            </select>
-        </div>
-        <div class="box-filtre">
-          <h5>Date ajout</h5>
-            <select name="date">
-              <option value="date-r">Plus récente</option>
-              <option value="date-a">Plus ancienne</option>
-            </select>
-        </div>
-        <button hx-post="{% url 'filtre' %}"
-                hx-target="#search"
-                type="submit">Afficher résultat</button>
-      </form>
-    </div>
+    <a {% if vue == "Tous" or vue == None %}class="active" {% endif %} href="{% url 'tableau' %}?filtre=tous">Tous</a>
+    <a {% if vue == "Pastel" %}class="active" {% endif %} href="{% url 'tableau' %}?filtre=Pastel">Pastel</a>
+    <a {% if vue == "Aquarelle" %}class="active" {% endif %} href="{% url 'tableau' %}?filtre=Aquarelle">Aquarelle</a>
+    <a {% if vue == "Acrylique" %}class="active" {% endif %} href="{% url 'tableau' %}?filtre=Acrylique">Acrylique</a>
+    <a {% if vue == "Huile" %}class="active" {% endif %} href="{% url 'tableau' %}?filtre=Huile">Huile</a>
+    <a {% if vue == "Mixte" %}class="active" {% endif %} href="{% url 'tableau' %}?filtre=Mixte">Technique Mixte</a>
+    <a {% if vue == "Nadine" %}class="active" {% endif %} href="{% url 'tableau' %}?filtre=Nadine">Nadine</a>
+    <a {% if vue == "Alain" %}class="active" {% endif %} href="{% url 'tableau' %}?filtre=Alain">Alain</a>
   </div>
   <div class="corps" id="search">
     {% if tableau %}
@@ -69,7 +28,9 @@
                 <p>
                   {{ tableau.peintre }}
                 </p>
+                <button>Voir tableau</button>
               </div>
+              
             </div>
           </a>
           {% endif %}

@@ -27,25 +27,40 @@ def index(request):
 
     context = {
         'num_tableau' : nombre_tableau,
-        'tableau' : tableau
+        'tableau' : tableau,
+        'page' : 'home'
     }
 
     return render(request, 'index.html', context=context)
+
+def Contact(request):
+    return render(request, 'blog/contact.html', context={'page':'contact'})
 
 
 
 
 def TableauListView(request):
-    tableau = Tableau.objects.filter()
-    peintre = Peintre.objects.filter()
-    type = Type.objects.filter()
+
+    vue = request.GET.get('filtre')
+    print(vue)
+    if vue == 'tous' or vue == None:
+        tableau = Tableau.objects.all()
+    else:
+        if vue == 'Alain' or vue == 'Nadine':
+            peintre = Peintre.objects.get(prenom = vue)
+            print(peintre)
+            tableau = Tableau.objects.filter(peintre = peintre)
+        else:
+            type = Type.objects.get(type_nom = vue)
+            tableau = Tableau.objects.filter(type = type)
+        
     
 
 
     context={
         'tableau':tableau,
-        'peintre':peintre,
-        'type':type
+        'vue' :vue,
+        'page' : 'tableau'
     }
 
     return render(request, 'blog/tableau_list.html' , context=context)
@@ -61,7 +76,11 @@ def TableauDetailView(request, pk):
         form = AddComments()
     except Tableau.DoesNotExist:
         raise Http404("Le tableau n'existe pas")
-    return render(request,'blog/tableau_detail.html',{'tableau':tableau, 'form':form})
+    return render(request,'blog/tableau_detail.html',{
+        'tableau':tableau, 
+        'form':form,
+        'page' : 'tableau'
+    })
 
 def addComments(request, pk):
     personne = escape(request.POST.get('personne'))

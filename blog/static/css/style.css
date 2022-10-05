@@ -5,11 +5,15 @@
     margin: 0;
     padding: 0;
     font-family: 'Montserrat', sans-serif;
-    color: #C583C8;
+    color: #003273;
 }
 
 body{
     position: relative;
+    background-image: url('/static/images/banniere_inverse.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    
 }
 
 body::-webkit-scrollbar{
@@ -19,9 +23,9 @@ body::-webkit-scrollbar{
 }
 
 body::-webkit-scrollbar-thumb{
-	background-color: #C583C8 ;
+	background-color: #003273 ;
 	border-radius:5px ;
-	border: 1px solid white;
+	border: 1px solid transparent;
 }
 
 body::-webkit-scrollbar-track{
@@ -38,11 +42,22 @@ header{
     display: flex;
     justify-content: center;
     flex-wrap: wrap;
-    border-bottom: 1px solid #F8BCFB;
+    border-bottom: 1px solid #003273;
     position: relative;
-    position: fixed;
     z-index: 99;
-    background-color: white;
+    /*
+    background-image: url('/static/images/banniere_inverse.jpg');
+    background-repeat: no-repeat;
+    background-size: cover;
+    */
+    
+}
+
+.reflect h1{
+    -webkit-box-reflect: 
+    below 0 -webkit-gradient(linear,0 0,0 100%,from(transparent),
+    color-stop(.6,transparent),
+    to(rgba(255, 255, 255, 1)));
 }
 
 nav{
@@ -54,12 +69,23 @@ nav{
     
 }
 
-nav li{
+nav a{
     list-style: none;
     width: 150px;
     height: 20px;
     text-align: center;
+    border: 1px solid #003273;
+    border-radius: 20px;
+    padding: 5px;
+    transition: all .4s;
 }
+
+nav a:hover{
+    background-color: #003273;
+    color: white !important;
+    transition: all .4s;
+}
+
 
 nav a{
     text-decoration: none;
@@ -71,16 +97,14 @@ nav ul{
     display: flex;
     justify-content: space-around;
     align-items: center;
-    
-    
 }
 
 .barre-a {
 	display: inline-block;
 	position: relative;
-	color: #F8BCFB;
-  }
-  
+	color: #003273;
+}
+
 .barre-a:after {
 	content: '';
 	position: absolute;
@@ -93,7 +117,7 @@ nav ul{
 	transform-origin: bottom right;
 	transition: transform 0.4s ease-out;
 }
-  
+
 .barre-a:hover:after {
 	transform: scaleX(1);
 	transform-origin: bottom left;
@@ -121,7 +145,7 @@ nav ul{
     display: block;
     width: 75%;
     height: 1px;
-    background-color: #F8BCFB;
+    background-color: #003273;
     position: absolute;
     bottom: 0;
 }
@@ -129,7 +153,7 @@ nav ul{
 .box-admin{
     width: 180px;
     height: 35px;
-    border: 1px solid #F8BCFB;
+    border: 1px solid #003273;
     border-radius: 5px;
     position: absolute;
     top: 5%;
@@ -181,18 +205,12 @@ nav ul{
 }
 
 .lien-gestion a:hover{
-    color: #F8BCFB;
+    color: #003273;
 }
 
 .contain-home{
-    padding-top: 20vh;
     width: 100%;
     height: 80vh;
-    background-image: url('https://cdn.pixabay.com/photo/2016/09/20/18/49/brushes-1683134_1280.jpg');
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat:no-repeat;
-    background-size: cover;
     position: relative;
 }
 
@@ -221,8 +239,12 @@ nav ul{
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 3.5em;
+    font-size: 3em;
     text-transform: uppercase;
+}
+.title-bienvenue h1 span{
+    font-size: .5em;
+    text-align: center;
 }
 
 .after-bienvenue{
@@ -283,7 +305,6 @@ nav ul{
     height: 100px;
     position: absolute;
     bottom: 0;
-    background-color: white;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -293,7 +314,7 @@ nav ul{
     background-color: transparent;
     opacity: 1;
     z-index: 10;
-    border: 2px solid #C583C8;
+    border: 2px solid #003273;
     border-radius: 5px;
     padding: 10px;
     font-size: 1.2em;
@@ -302,7 +323,7 @@ nav ul{
 
 .box-button button:hover{
     cursor: pointer;
-    background-color: #C583C8;
+    background-color: #003273;
     color: white;
 }
 
@@ -360,174 +381,60 @@ nav ul{
 
 
 .contain-tableau{
-    padding-top: 20vh;
     width: 100%;
-}
-
-.contain-tableau h1{
-    text-align: center;
-    margin-top: 25px;
-    font-size: 1.7em;
-    text-transform: uppercase;
-}
-
-.filtre{
-    margin-top: 25px;
-    margin-left: auto;
-    margin-right: 80px;
-    width: 25%;
-    display: flex;
-    justify-content: space-around;
-}
-
-.filtre button {
-    border:1px solid #C583C8;
-    background-color: transparent;
-    padding: 5px;
-    border-radius: 10px;
-    text-transform: uppercase;
-    transition: all .7s;
-
-}
-
-.contain-filtre{
-    width: 90%;
-    height: 0px;
-    margin-top: 25px;
-    margin-left: auto;
-    margin-right: auto;
-    text-align: center;
-    transition: all .7s;
-    opacity: 0;
-}
-
-.activate{
-    height: 200px;
-    opacity: 1;
+    min-height:100vh;
+    
 }
 
 
-.contain-filtre h4{
-    text-transform: uppercase;
-}
-
-.contain-box-filtre form{
-    width: 100%;
-    height: 90%;
-    display:flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    overflow: auto;
-}
-
-.box-filtre{
-    width: 300px;
-    text-align: center;
-    overflow:auto;
-}
-
-.box-filtre form{
-    margin: auto;
-}
-
-.behind{
-    position: relative;
-}
-
-.behind:after{
-    content: "";
-    display: block;
-    width: 1px;
-    height: 90%;
-    background-color: #C583C8;
-    position: absolute;
-    right: 0;
-    top: 0;
-}
-
-
-.box-filtre div{
-    width: 75%;
-    margin: auto;
-
-}
-
-.box-filtre div input{
-    position: absolute;
-    left: -9999px;
-}
-
-.box-filtre div label{
-    display: block;
-    position: relative;
-    padding: 14px;
-    border: 2px solid #C583C8;
-    border-radius: 100px;
-    background-color: transparent;
-    white-space: nowrap;
-    transform: scale(0.7);
-    cursor: pointer;
-    transition: background-color .2s;
-}
-
-.box-filtre div label:before{
-    content: '';
-    display: block;
-    position: absolute;
-    top: 10px;
-    bottom: 10px;
-    left: 10px;
-    width: 32px;
-    border: 3px solid #C583C8;
-    border-radius: 100px;
-    transition: background-color .2s;
-}
-  
-  input:checked + label {
-    background-color: transparent;
-  }
-  
-  input:checked + label::before {
-    background-color: #C583C8;
-  }
-
-
-
-.fa-solid{
-    transition: all .7s;
-}
-
-.filtre button:hover{
-    background-color: #C583C8;
-    color: white;
-    cursor: pointer;
-}
-
-button:hover
-.fa-solid{
-    color: white;
-}
-
-.filtre input {
-    border:1px solid #C583C8;
-    background-color: transparent;
-    padding: 5px;
-    border-radius: 10px;
-
-}
 
 .headen{
-    width: 100%;
+    width: 80%;
+    height: 50px;
+    margin: auto;
     position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-top: 50px;
 }
+
+.headen a{
+    text-decoration: none;
+    border: 1px solid #003273;
+    border-radius: 20px;
+    padding: 6px;
+    font-size: .8em;
+    transition: all .4s;
+    background-color: transparent;
+}
+
+.headen a:hover{
+    border-color: #003273 !important;
+    background-color: #003273;
+    color: white;
+    transition: all .4s;
+}
+
+
+.active{
+    border-color: #003273 !important;
+    background-color: #003273!important;
+    color: white;
+}
+
+.active a{
+    color: white !important;
+}
+
 
 .headen:after{
     content: "";
     display: block;
-    width: 90%;
+    width: 100%;
     margin: auto;
     height: 1px;
-    background-color: #C583C8;
+    background-color: #003273;
     position: absolute;
     bottom: -15%;
     left: 50%;
@@ -548,8 +455,8 @@ button:hover
     margin-left: 30px;
     width: 300px;
     height: 400px;
-    border: 1px solid #FCF5FC;
-    background-color: #FCF5FC;
+    border: 1px solid transparent;
+    background-color: #0032;
     border-radius: 10px;
     text-align: center;
     position: relative;
@@ -557,9 +464,13 @@ button:hover
 
 }
 
-.tableau:hover{
-    transform: scale(1.01);
+.tableau:hover .text-tableau button{
+    background-color: #003273;
+    color: white;
+    transition: all .4s;
+    cursor: pointer;
 }
+
 
 
 .text-tableau{
@@ -570,6 +481,15 @@ button:hover
 }
 .text-tableau p{
     margin-top: 20px;
+}
+
+.text-tableau button{
+    border: 1px solid #003273;
+    background: transparent;
+    padding: 6px;
+    border-radius: 5px;
+    margin-top: 10px;
+    transition: all .4s;
 }
 
 .image-tableau{
@@ -592,7 +512,6 @@ button:hover
 
 .contain-detail{
     width: 100%;
-    padding-top: 20vh;
     padding-bottom: 5vh;
 }
 
@@ -661,7 +580,7 @@ button:hover
     width: 100%;
     height: 1px;
     margin-top: 15px;
-    background-color: #C583C8;
+    background-color: #003273;
 }
 
 .commentaire h5{
@@ -710,7 +629,7 @@ button:hover
 .contain-detail form input{
     width: 40%;
     height: 22px;
-    border: 1px solid #C583C8;
+    border: 1px solid #003273;
     border-radius: 5px;
     padding: 2px;
 }
@@ -720,7 +639,7 @@ button:hover
     max-width: 100%;
     min-height: 150px;
     max-height: 220px;
-    border: 1px solid #C583C8;
+    border: 1px solid #003273;
     border-radius: 5px;
     overflow: auto;
     padding: 5px;
@@ -730,8 +649,8 @@ button:hover
     width: 100px;
     height: 40px;
     background-color: transparent;
-    color: #C583C8;
-    border: 2px solid #C583C8;
+    color: #003273;
+    border: 2px solid #003273;
     font-size: 1.05em;
     margin: 30px auto;
     border-radius: 10px;
@@ -740,7 +659,7 @@ button:hover
 }
 
 .contain-detail form  button:hover{
-    background-color: #C583C8;
+    background-color: #003273;
     color: white;
     cursor: pointer;
 }
@@ -797,7 +716,7 @@ button:hover
 }
 
 .contain-login form{
-    border: 1px solid #C583C8;
+    border: 1px solid #003273;
     border-radius: 10px;
     padding: 15px;
 }
@@ -816,7 +735,7 @@ button:hover
 }
 
 .ajouter a{
-    border: 1px solid #C583C8;
+    border: 1px solid #003273;
     padding: 5px;
     border-radius: 10px;
     text-decoration: none;
@@ -824,7 +743,7 @@ button:hover
 }
 
 .ajouter a:hover{
-    background-color: #C583C8;
+    background-color: #003273;
     color: white;
     cursor: pointer;
 }
@@ -848,7 +767,7 @@ button:hover
     display: block;
     width: 100%;
     height: 1px;
-    background-color: #C583C8;
+    background-color: #003273;
     position: absolute;
     top: -30%;
 }
@@ -858,7 +777,7 @@ button:hover
     display: block;
     width: 100%;
     height: 1px;
-    background-color: #C583C8;
+    background-color: #003273;
     position: absolute;
     bottom: -5%;
 }
@@ -879,7 +798,7 @@ button:hover
 
 .form-affich button:hover
 .fa-solid{
-    color: #C583C8;
+    color: #003273;
     cursor: pointer;
 }
 
@@ -891,7 +810,6 @@ button:hover
 /* style page modification tableau */
 
 .contain-update{
-    padding-top: 20vh;
     width: 100%;
     text-align: center;
     position: relative;
@@ -904,12 +822,18 @@ button:hover
 
  }
 
+.contain-update a{
+    float: left;
+    margin:15px;
+    margin-right: 0px;
+}
+
 .contain-update form p{
     margin-bottom: 15px;
 }
 
 .contain-update form p input{
-    border: 1px solid #C583C8;
+    border: 1px solid #003273;
     border-radius: 10px;
     padding: 5px;
 }
@@ -920,14 +844,14 @@ button:hover
 
 .contain-update form button{
     background-color: transparent;
-    border: 2px solid #C583C8;
+    border: 2px solid #003273;
     border-radius: 5px;
     padding: 5px;
 }
 
 .contain-update form button:hover{
     cursor: pointer;
-    background-color: #C583C8;
+    background-color: #003273;
     color: white;
 }
 
@@ -1071,10 +995,6 @@ button:hover
    header{
         border: none;
         height: 10vh;
-   }
-
-   .contain-home{
-        padding-top: 10vh;
    }
    .burger{
         position: absolute;
@@ -1232,9 +1152,6 @@ button:hover
 
     }
 
-    .contain-tableau{
-        padding-top: 10vh;
-    }
 
     .contain-tableau h1{
         font-size: 1em;

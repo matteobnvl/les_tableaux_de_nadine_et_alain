@@ -14,8 +14,8 @@
 </head>
 <body>
     <header>
-      <div class="title-site">
-        <h1>Blog peinture</h1>
+      <div class="title-site reflect">
+        <h1>PeintCette</h1>
       </div>
       <div id="burger" onclick="ClickBurger()" class="burger" class="burger">
         <span></span>
@@ -24,8 +24,9 @@
         <span></span>
       {% block menu %}
         <ul>
-          <li class="barre-a"><a href="{% url 'index' %}">Accueil</a></li>
-          <li class="barre-a"><a href="{% url 'tableau' %}">Nos tableaux</a></li>
+          <a class="{% if page == "home" %}active{% endif %}" href="{% url 'index' %}">Accueil</a>
+          <a class="{% if page == "tableau" %}active{% endif %}" href="{% url 'tableau' %}">Nos tableaux</a>
+          <a class="{% if page == "contact" %}active{% endif %}" href="{% url 'contact' %}">Contact</a>
         </ul>
      {% endblock %}
       </nav>

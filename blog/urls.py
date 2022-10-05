@@ -18,6 +18,7 @@ urlpatterns = [
     path('search-tableau/', views.SearchTableau, name='search'),
     path('addtype/',views.AddType,name='addtype'),
     path('filtre/',views.FiltreTableau, name='filtre'),
+    path('contact/', views.Contact, name='contact'),
 
 ]
 
