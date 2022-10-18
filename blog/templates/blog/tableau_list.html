@@ -4,13 +4,14 @@
 <section class="contain-tableau">
   <div class="headen">
     <a {% if vue == "Tous" or vue == None %}class="active" {% endif %} href="{% url 'tableau' %}?filtre=tous">Tous</a>
+    <a {% if vue == "Nadine" %}class="active" {% endif %} href="{% url 'tableau' %}?filtre=Nadine">Nadine</a>
+    <a {% if vue == "Alain" %}class="active" {% endif %} href="{% url 'tableau' %}?filtre=Alain">Alain</a>
     <a {% if vue == "Pastel" %}class="active" {% endif %} href="{% url 'tableau' %}?filtre=Pastel">Pastel</a>
     <a {% if vue == "Aquarelle" %}class="active" {% endif %} href="{% url 'tableau' %}?filtre=Aquarelle">Aquarelle</a>
     <a {% if vue == "Acrylique" %}class="active" {% endif %} href="{% url 'tableau' %}?filtre=Acrylique">Acrylique</a>
     <a {% if vue == "Huile" %}class="active" {% endif %} href="{% url 'tableau' %}?filtre=Huile">Huile</a>
     <a {% if vue == "Mixte" %}class="active" {% endif %} href="{% url 'tableau' %}?filtre=Mixte">Technique Mixte</a>
-    <a {% if vue == "Nadine" %}class="active" {% endif %} href="{% url 'tableau' %}?filtre=Nadine">Nadine</a>
-    <a {% if vue == "Alain" %}class="active" {% endif %} href="{% url 'tableau' %}?filtre=Alain">Alain</a>
+
   </div>
   <div class="corps" id="search">
     {% if tableau %}
