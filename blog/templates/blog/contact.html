@@ -4,6 +4,11 @@
     <div class="contain-title-contact">
         <h3>Nous contacter</h3>
     </div>
+    {% if succes == True %}
+        <p style="text-align:center">Le mail a bien été envoyé</p>
+    {% elif succes == False %}
+        <p style="text-align:center">Le mail n'a pas pu être envoyé</p>
+    {% endif %}
     <div class="contain-form-contact">
         <form action="{% url 'contact' %}" method="post">
             {% csrf_token %}

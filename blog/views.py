@@ -50,14 +50,15 @@ def Contact(request):
             try:
                 send_mail(subject, message, 'matteo@matteo-bonneval.fr', ['matteobonneval19@gmail.com']) 
             except BadHeaderError:
-                print('probleme envoie....')
-            print('email envoyé')
+                return render(request, 'blog/contact.html', context={'page':'contact','form' : form,'succes':True})
+            return render(request, 'blog/contact.html', context={'page':'contact','form' : form,'succes':True})
     
     form = formContact()
     return render(request, 'blog/contact.html', 
     context={
         'page':'contact',
-        'form' : form
+        'form' : form,
+        'succes':None
         })
 
 
