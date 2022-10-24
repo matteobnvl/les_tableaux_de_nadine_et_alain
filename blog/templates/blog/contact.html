@@ -1,5 +1,14 @@
 {% extends "base_generic.html" %}
 
 {% block content %}
-
+    <div class="contain-title-contact">
+        <h3>Nous contacter</h3>
+    </div>
+    <div class="contain-form-contact">
+        <form action="{% url 'contact' %}" method="post">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button>Envoyer</button>
+        </form>
+    </div>
 {% endblock %}

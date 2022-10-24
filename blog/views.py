@@ -7,10 +7,11 @@ from django.http import Http404, HttpResponse
 from django.shortcuts import redirect, render
 from django.views import generic
 from .models import Peintre, Tableau, Commentaire, Type
-from blog.forms import AddComments, FormAddType, FormTableau
+from blog.forms import AddComments, FormAddType, FormTableau, formContact
 from django.contrib.auth import authenticate, login
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.csrf import csrf_exempt, csrf_protect
+from django.core.mail import send_mail, BadHeaderError
 
 # Create your views here.
 
@@ -34,7 +35,30 @@ def index(request):
     return render(request, 'index.html', context=context)
 
 def Contact(request):
-    return render(request, 'blog/contact.html', context={'page':'contact'})
+
+    if request.method == 'POST':
+        form = formContact(request.POST)
+        if form.is_valid():
+            subject = 'Contact Site' 
+            body = {
+			'first_name': form.cleaned_data['Nom'], 
+			'last_name': form.cleaned_data['Prenom'], 
+			'email': form.cleaned_data['Email'], 
+			'message':form.cleaned_data['Message'], 
+			}
+            message = "\n".join(body.values())
+            try:
+                send_mail(subject, message, 'matteo@matteo-bonneval.fr', ['matteobonneval19@gmail.com']) 
+            except BadHeaderError:
+                print('probleme envoie....')
+            print('email envoyé')
+    
+    form = formContact()
+    return render(request, 'blog/contact.html', 
+    context={
+        'page':'contact',
+        'form' : form
+        })
 
 
 

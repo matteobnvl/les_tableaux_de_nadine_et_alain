@@ -13,6 +13,7 @@ body{
     background-image: url('/static/images/banniere_inverse.jpg');
     background-repeat: no-repeat;
     background-size: cover;
+    background-attachment: fixed;
     
 }
 
@@ -113,7 +114,7 @@ nav ul{
 	height: 2px;
 	bottom: 0;
 	left: 0;
-	background-color: #F8BCFB;
+	background-color: #003273;
 	transform-origin: bottom right;
 	transition: transform 0.4s ease-out;
 }
@@ -136,7 +137,6 @@ nav ul{
     justify-content: center;
     align-items: center;
     position: relative;
-    text-transform: uppercase;
 
 }
 
@@ -218,28 +218,10 @@ nav ul{
     position: relative;
 }
 
-.before-bienvenue{
-    width:100%;
-    background-color: white;
-    height: 10%;
-    position: relative;
-}
-.before-bienvenue:after{
-    content: "";
-    width: 100%;
-    height: 10vh;
-    display: block;
-    background-image: url('https://www.chambaud-abstrait.com/wp-content/themes/zass/image/ripoff_flip.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: absolute;
-    bottom: -50%;
-    transform: translateY(50%);
-}
 
 .title-bienvenue{
     width: 100%;
-    height: 80%;
+    height: 60%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -251,39 +233,10 @@ nav ul{
     text-align: center;
 }
 
-.after-bienvenue{
-    width:100%;
-    background-color: white;
-    height: 10%;
-    position: relative;
-}
-
-.after-bienvenue:before{
-    content: "";
-    width: 100%;
-    height: 10vh;
-    display: block;
-    background-image: url('https://www.chambaud-abstrait.com/wp-content/themes/zass/image/ripoff_flip.png');
-    background-repeat: no-repeat;
-    background-size: cover;
-    position: absolute;
-    top: -50%;
-    transform: translateY(-50%) rotate(180deg);
-}
-
-.next-box{
-    width: 100%;
-    margin: 250px 0px;
-}
-
-.next-box p{
-    width: 60%;
+.contain-home p{
+    width: 80%;
     margin: auto;
-    text-align: center;
-    line-height: 30px;
-    font-size: 1.5em;
-    font-style: oblique;
-    font-family: 'Edu VIC WA NT Beginner', cursive;
+    font-size: 1.3em;
 }
 
 .decouvrir-tableau{
@@ -978,29 +931,92 @@ nav ul{
 }
 
 
+/* page contact */
+
+.contain-form-contact{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.contain-form-contact form{
+    width: 300px;
+}
+
+.contain-form-contact form input{
+    padding:8px;
+    border: 1px solid #003273;
+    border-radius: 8px;
+    width: 100%;
+}
+
+.contain-title-contact h3{
+    text-align: center;
+    font-size: 2em;
+}
+
+.contain-form-contact form textarea{
+    max-width: 300px;
+    min-width: 300px;
+    max-height: 150px;
+    min-height: 150px;
+    padding:8px;
+    border: 1px solid #003273;
+    border-radius: 8px;
+    overflow-y: auto;
+}
+
+.contain-form-contact p{
+    margin-bottom: 15px;
+}
+
+.contain-form-contact form label{
+    width: 100%;
+}
+
+
+.contain-form-contact button{
+    background-color: transparent;
+    opacity: 1;
+    z-index: 10;
+    border: 2px solid #003273;
+    border-radius: 5px;
+    padding: 10px;
+    font-size: 1.2em;
+    transition: all .7s;
+}
+
+.contain-form-contact button:hover{
+    cursor: pointer;
+    background-color: #003273;
+    color: white;
+}
 
 
 
 
 @media screen and (max-width: 520px){
-   .title-bienvenue{
+    .title-bienvenue{
         font-size: 2em;
-   } 
+    } 
 
-   .title-site h1{
+    .title-site h1{
         font-size: 1.4em;
         margin-top: 35px;
-   }
+    }
 
-   .title-site:after{
+    .title-site:after{
         content: none;
-   }
+    }
 
-   header{
+    header{
         border: none;
         height: 10vh;
-   }
-   .burger{
+    }
+    .burger{
         position: absolute;
         left: 0;
         top: 0;

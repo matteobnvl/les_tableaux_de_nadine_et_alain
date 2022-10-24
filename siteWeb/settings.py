@@ -128,3 +128,12 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 
 LOGIN_REDIRECT_URL = '/'
+
+
+# réglages email smtp 
+
+EMAIL_USE_TLS = True  
+EMAIL_HOST = 'smtp.hostinger.com'  
+EMAIL_PORT = 587  
+EMAIL_HOST_USER = 'matteo@matteo-bonneval.fr'  
+EMAIL_HOST_PASSWORD = 'Lb7072Sc@'  
